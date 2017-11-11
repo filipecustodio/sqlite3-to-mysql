@@ -6,7 +6,6 @@
 # Filipe Custodio, NOV 2017
 
 use strict;
-use Data::Dumper;
 
 scalar( @ARGV ) == 2 || die "usage: $0 <input.sql> <output.sql>";
 
@@ -26,7 +25,7 @@ while ( <FILE> ) {
 		$colcount = 0;
 	} elsif ( /^\s*\);/ ) {
 		$cur_table = undef;
-	} elsif ( /INSERT INTO "([^"]+)" VALUES\s*\(([^)]+)\);/ ) {
+	} elsif ( /INSERT INTO "([^"]+)" VALUES\s*\((.*)\);/ ) {
 		my $table = $1;
 		my $col = 0;
 		my $collist = $2;
